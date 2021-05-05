@@ -34,6 +34,10 @@ main {
     padding: var(--gutter);
     padding-top: calc(var(--header-height) + 60px);
     align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 section {
@@ -59,4 +63,64 @@ footer {
     border-top: .5px solid #ccc;
     padding: calc(var(--gutter) / 2);
     font-size: 1rem;
+}
+
+a {
+    color: blue;
+}
+
+a:active {
+    color: aquamarine;
+
+}
+
+a:visited {
+    color: cornflowerblue;
+}
+
+.score {
+    background: inherit;
+}
+button {
+    background: #eee;
+    background-color: #eee;
+    padding: .5rem 2rem;
+    box-shadow: .2rem .2rem .1rem aliceblue;
+    border: .5px solid #ccc;
+    border-radius: 2rem;
+    font-size: .9rem;
+}
+
+button:hover {
+    box-shadow: .5rem .5rem .5rem aliceblue;
+    transform: translate(.05rem, .05rem);
+}
+
+button:active {
+    background: aquamarine;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    margin: 1rem;
+}
+
+input {
+    display: none;
+}
+
+input[type=radio]:checked + img {
+
+    border: 5px solid aquamarine;
+}
+
+strong {
+    font-weight: bolder;
+    color: midnightblue;
+}
+
+.hidden {
+    display: none;
 }

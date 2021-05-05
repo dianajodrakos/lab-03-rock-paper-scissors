@@ -8,19 +8,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/home.css">
-    <title>It's a quiz!</title>
+    <title>R O C K /// P A P E R /// S C I S S O R</title>
 </head>
 
 <body>
-    
 <header>
 </header>
 
 <main>
+
+    <label>
+        <input type="radio" name="user-throw" value="rock" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZIL_O7-qAw5jd4fLRst2AK0QH3MKzCh2OQ&usqp=CAU" alt="rock">
+    </label>
+    <label>
+        <input type="radio" name="user-throw" value="paper" />
+        <img src="https://www.origamiway.com/images/planes/star-crusher/star-crusher.jpg" alt="paper">
+    </label>
+    <label>
+        <input type="radio" name="user-throw" value="scissors" />
+        <img src="https://www.toxel.com/wp-content/uploads/2010/09/scissors01.jpg" alt="scissors">
+    </label>
+    <button type="button" name="user=throw" id="user-throw">Play!</button>
+
 </main>
 
 <footer>
+    <section class="score">
+        <div id="results"></div>
+        <button type="button" id="reset">Reset</button>
+    </section>
 </footer>
 
 <script type="module" src="./app.js"></script>
