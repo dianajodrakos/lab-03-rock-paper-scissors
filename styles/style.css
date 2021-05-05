@@ -1,0 +1,62 @@
+
+body {
+    --color1: rgba(255, 255, 255, 1);
+    --shadow: 15px 5px 15px -12px rgba(0,0,0,0.45);
+    --gutter: 50px;
+    --header-height: 200px;
+    --footer-height: 50px;
+    height: 100%;
+    width: 100%;
+    min-width: 500px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    font-size: 1.5vw;
+}
+
+header {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 3rem;
+    position: fixed;
+    width: 100%;
+    min-height: var(--header-height);
+    background-color: var(--color1);
+    box-shadow: var(--shadow);
+    border-top: .5px solid #ccc;
+}
+
+main {
+    background-color: var(--color1);
+    padding: var(--gutter);
+    padding-top: calc(var(--header-height) + 60px);
+    align-self: center;
+}
+
+section {
+    background-color: var(--color1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+footer {
+    width: 100%;
+    height: var(--footer-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    border-top: .5px solid #ccc;
+    padding: calc(var(--gutter) / 2);
+    font-size: 1rem;
+}
