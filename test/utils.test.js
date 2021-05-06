@@ -1,75 +1,46 @@
 // IMPORT MODULES under test here:
-import { countAsAYes, countAsANo, countSpacewalk } from '../utils.js';
+import { didUserWin } from '../utils.js';
 
 const test = QUnit.test;
 
-test('input a string that starts with y and return true', (expect) => {
+test('input player throwing rock, computer throwing scissors, return win', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
+    const expected = 'win';
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = countAsAYes('Yup');
+    const actual = didUserWin('rock', 'scissors');
 
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
 
-test('input a string that anything but y and return false', (expect) => {
+test('input player throwing paper, computer throwing scissors, return win', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = false;
+    const expected = 'lose';
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = countAsAYes('nope');
-    
-    //Expect
-    // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
-});
-
-test('input a string that anything but n and return false', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
-    const expected = false;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
-    const actual = countAsANo('yes');
-    
-    //Expect
-    // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
-});
-
-test('input a string that starts with n and return true', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
-    const expected = true;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
-    const actual = countAsANo('Noperino');
+    const actual = didUserWin('paper', 'scissors');
 
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
 
-test('input a string that returns true', (expect) => {
+test('input player throwing paper, computer throwing paper, return draw', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
+    const expected = 'draw';
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = countSpacewalk('Susan Helms');
+    const actual = didUserWin('paper', 'paper');
 
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
-

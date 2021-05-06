@@ -17,6 +17,9 @@ inputButton.addEventListener ('click', () => {
     let computerThrow = getRandomThrow();
 
     console.log(computerThrow);
-    console.log('input.value = ' + input.value + ', userThrow = ' + userThrow);
+    console.log(userThrow);
+
+    //compare values to determine winner
+    let userWin = didUserWin(userThrow, computerThrow);
 
 });
