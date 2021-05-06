@@ -4,10 +4,9 @@ export function didUserWin(player, computer) {
      || (player === 'paper' && computer === 'rock')) {
         return 'win';
     }
-    else if (player === computer) {
+    if (player === computer) {
         return 'draw';
     }
-    else {
-        return 'lose';
-    }
+    return 'lose';
+    
 }

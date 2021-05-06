@@ -13,14 +13,18 @@
 
 <body>
 <header>
+    <section>
+        <div id="result">R O C K  ///  P A P E R  ///  S C I S S O R S</div>
+    </section>
 </header>
 
 <main>
 
     <label>
-        <input type="radio" name="user-throw" value="rock" />
+        <input type="radio" name="user-throw" value="rock" checked="true" />
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGZIL_O7-qAw5jd4fLRst2AK0QH3MKzCh2OQ&usqp=CAU" alt="rock">
     </label>
+    <button type="button" name="user=throw" id="user-throw">Play!</button>
     <label>
         <input type="radio" name="user-throw" value="paper" />
         <img src="https://www.origamiway.com/images/planes/star-crusher/star-crusher.jpg" alt="paper">
@@ -29,14 +33,14 @@
         <input type="radio" name="user-throw" value="scissors" />
         <img src="https://www.toxel.com/wp-content/uploads/2010/09/scissors01.jpg" alt="scissors">
     </label>
-    <button type="button" name="user=throw" id="user-throw">Play!</button>
-
 </main>
 
 <footer>
     <section class="score">
-        <div id="results"></div>
-        <button type="button" id="reset">Reset</button>
+        <div class="wins">wins: <span class="wins-total"> 0</span></div>
+        <div class="draws">draws: <span class="draws-total">0</span></div>
+        <div class="losses">losses: <span class="losses-total">0</span></div>
+        <div class="reset-div"><button type="button" id="reset">Reset</button></div>
     </section>
 </footer>
 

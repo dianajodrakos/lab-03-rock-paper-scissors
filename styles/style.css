@@ -1,42 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
 
 body {
-    --color1: rgba(255, 255, 255, 1);
-    --shadow: 15px 5px 15px -12px rgba(0,0,0,0.45);
-    --gutter: 50px;
-    --header-height: 200px;
-    --footer-height: 50px;
     height: 100%;
     width: 100%;
     min-width: 500px;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 18px;
+    font-family: 'DM Mono', monospace;
     font-size: 1.5vw;
+    overflow: scroll;
 }
 
 header {
-    font-size: 18px;
+    position: fixed;
+    width: 100%;
+    height: 80px;
     display: flex;
     flex-direction: column;
     justify-content:space-around;
     align-items: center;
     text-align: center;
-    padding: 1rem 3rem;
-    position: fixed;
-    width: 100%;
-    min-height: var(--header-height);
-    background-color: var(--color1);
-    box-shadow: var(--shadow);
+    padding: 0rem 3rem;
+    background-color: #eee;
     border-top: .5px solid #ccc;
+    border-bottom: .5px solid #ccc;
+    font-size: 2rem;
+    z-index: 1;
 }
 
 main {
-    background-color: var(--color1);
-    padding: var(--gutter);
-    padding-top: calc(var(--header-height) + 60px);
+    width: 800px;
+    height: 700px;
+    margin: auto;
+    padding-top: 90px;
     align-self: center;
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 
@@ -55,14 +53,33 @@ h2 {
 
 footer {
     width: 100%;
-    height: var(--footer-height);
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #eee;
     border-top: .5px solid #ccc;
-    padding: calc(var(--gutter) / 2);
-    font-size: 1rem;
+    border-bottom: .5px solid #ccc;
+    font-size: 1.5rem;
+}
+
+.score {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-template-rows: 70px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.reset-div {
+    width: 50px;
+
+}
+
+footer span {
+    display: inline;
+    margin: 0 5px;
 }
 
 a {
@@ -71,7 +88,6 @@ a {
 
 a:active {
     color: aquamarine;
-
 }
 
 a:visited {
@@ -81,30 +97,59 @@ a:visited {
 .score {
     background: inherit;
 }
+
 button {
+    height: 45px;
+    width: 125px;
+    margin: 0 2 rem;
+    font-family: inherit;
+    font-size: 1.2rem;
     background: #eee;
     background-color: #eee;
     padding: .5rem 2rem;
-    box-shadow: .2rem .2rem .1rem aliceblue;
+    box-shadow: 8px 8px lightblue;
     border: .5px solid #ccc;
-    border-radius: 2rem;
-    font-size: .9rem;
+    text-transform: uppercase;
 }
 
 button:hover {
-    box-shadow: .5rem .5rem .5rem aliceblue;
+    height: 45px;
+    width: 125px;
+    font-size: 1.4rem;
+    background-color: aquamarine;
+    box-shadow: 8px 8px darkblue;
     transform: translate(.05rem, .05rem);
 }
+button#user-throw {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 200px;
+    max-width: 250px;
+    min-height: 100px;
+    max-height: 200px;
+    background: #eee;
+    padding: 1rem 2rem;
+    box-shadow: 20px 20px aliceblue;
+    border: .5px solid #ccc;
+    font-size: 3rem;
+}
 
-button:active {
-    background: aquamarine;
+button#user-throw:hover {
+    background-color: aquamarine;
+    box-shadow: 20px 20px darkblue;
+    transform: translate(.1rem, .1rem);
+    font-size: 3.5rem;
+}
+
+button:active, button#user-throw:active {
+    background:lightsalmon;
 }
 
 img {
-    width: 300px;
-    height: auto;
-    overflow: hidden;
     margin: 1rem;
+    max-width: 300px;
+    height: auto;
 }
 
 input {
@@ -112,15 +157,8 @@ input {
 }
 
 input[type=radio]:checked + img {
-
-    border: 5px solid aquamarine;
+    box-shadow: 20px 20px aquamarine;
 }
-
-strong {
-    font-weight: bolder;
-    color: midnightblue;
-}
-
-.hidden {
-    display: none;
+input[type=radio]:hover + img {
+    box-shadow: 20px 20px khaki;
 }
