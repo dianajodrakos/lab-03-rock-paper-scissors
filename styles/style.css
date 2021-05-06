@@ -159,3 +159,7 @@ input[type=radio]:checked + img {
 input[type=radio]:hover + img {
     box-shadow: 20px 20px khaki;
 }
+
+.leading-total {
+    color: lightsalmon;
+}

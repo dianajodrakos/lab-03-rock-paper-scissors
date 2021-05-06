@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { didUserWin } from '../utils.js';
+import { didUserWin, calcLeadingTotal } from '../utils.js';
 
 const test = QUnit.test;
 
@@ -123,6 +123,35 @@ test('input player throwing scissors, computer throwing scissors, return draw', 
     //Act 
     // Call the function you're testing and set the result to a const
     const actual = didUserWin('scissors', 'scissors');
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
+
+
+test('input 2 wins, 1 draw and 1 loss, return \'win\'', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 'win';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = calcLeadingTotal(2, 1, 1);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
+
+test('input 2 wins, 2 draws and 1 loss, return \'reset\'', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 'reset';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = calcLeadingTotal(2, 2, 1);
 
     //Expect
     // Make assertions about what is expected versus the actual result

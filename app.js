@@ -1,5 +1,5 @@
 import { getRandomThrow } from './get-random-throw.js';
-import { didUserWin } from './utils.js';
+import { didUserWin, calcLeadingTotal } from './utils.js';
 
 // import functions and grab DOM elements
 const inputButton = document.querySelector('#user-throw');
@@ -7,10 +7,8 @@ const resultDisplay = document.querySelector('#result');
 const winsDisplayTotal = document.querySelector('.wins-total');
 const drawsDisplayTotal = document.querySelector('.draws-total');
 const lossesDisplayTotal = document.querySelector('.losses-total');
-const winsDisplay = document.querySelector('.wins');
-const drawsDisplay = document.querySelector('.draws');
-const lossesDisplay = document.querySelector('.losses');
 const resetButton = document.querySelector('#reset');
+const scoreDisplay = document.querySelector('.score');
 
 // initialize state
 let win = 0;
@@ -39,17 +37,21 @@ inputButton.addEventListener ('click', () => {
         resultDisplay.textContent = 'YOU LOSE :('; 
     }
 
-    //update DOM
+    //update DOM with score totals
     winsDisplayTotal.textContent = win;
     drawsDisplayTotal.textContent = draw;
     lossesDisplayTotal.textContent = lose;
 
+    //highlight leading total
+    let leadingTotal = calcLeadingTotal(win, draw, lose);
+    let leadingTotalDisplay = scoreDisplay.querySelector(`.${leadingTotal}`);
+    leadingTotalDisplay.style.color('lightsalmon');
 });
 
 resetButton.addEventListener ('click', () => {
     //reset class on results div
     resultDisplay.textContent = 'R O C K  ///  P A P E R  ///  S C I S S O R S';
-    
+
     //reset score variables
     win = 0;
     draw = 0;
