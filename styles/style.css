@@ -65,7 +65,7 @@ footer {
 
 .score {
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px;
+    grid-template-columns: minmax(100px, 175px) minmax(100px, 175px) minmax(100px, 175px) minmax(100px, 175px);
     grid-template-rows: 70px;
     justify-content: center;
     align-items: center;
@@ -74,7 +74,7 @@ footer {
 
 .reset-div {
     width: 50px;
-
+    justify-self: center;
 }
 
 footer span {
@@ -121,18 +121,18 @@ button:hover {
     transform: translate(.05rem, .05rem);
 }
 button#user-throw {
-    margin-top: 80px;
-    margin-left: 20px;
-    margin-right: 20px;
-    min-width: 200px;
-    max-width: 250px;
-    min-height: 100px;
-    max-height: 200px;
+    margin-top: 2re;
+    margin-left: 2rem;
+    ;
+    margin-right: 2rem;
+    ;
+    width: 250px;
+    height: 200px;
     background: #eee;
     padding: 1rem 2rem;
     box-shadow: 20px 20px aliceblue;
     border: .5px solid #ccc;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 button#user-throw:hover {
@@ -147,7 +147,7 @@ button:active, button#user-throw:active {
 }
 
 img {
-    margin: 1rem;
+    margin: 2rem;
     max-width: 300px;
     height: auto;
 }
