@@ -4,11 +4,14 @@ import { didUserWin, calcLeadingTotal } from './utils.js';
 // import functions and grab DOM elements
 const inputButton = document.querySelector('#user-throw');
 const resultDisplay = document.querySelector('#result');
-const winsDisplayTotal = document.querySelector('.wins-total');
-const drawsDisplayTotal = document.querySelector('.draws-total');
-const lossesDisplayTotal = document.querySelector('.losses-total');
+const winDisplayTotal = document.querySelector('.wins-total');
+const drawDisplayTotal = document.querySelector('.draws-total');
+const lossDisplayTotal = document.querySelector('.losses-total');
+const winDisplay = document.querySelector('.win');
+const drawDisplay = document.querySelector('.draw');
+const loseDisplay = document.querySelector('.lose');
+const resetDisplay = document.querySelector('.reset-div');
 const resetButton = document.querySelector('#reset');
-const scoreDisplay = document.querySelector('.score');
 
 // initialize state
 let win = 0;
@@ -17,14 +20,21 @@ let lose = 0;
 
 // set event listeners to update state and DOM
 inputButton.addEventListener ('click', () => {
+    
     //grab user + CPU throws and store them in variables
     const input = document.querySelector('input[type=radio]:checked');
+
+    //if no input is checked, alert user
+    if (input === null) {
+        return alert('Choose your weapon!');
+    }
+
     let userThrow = input.value;
     let computerThrow = getRandomThrow();
-
+    
     //compare values to determine winner
     let evalUserWin = didUserWin(userThrow, computerThrow);
-
+    
     //change state
     if (evalUserWin === 'draw') {
         draw++;
@@ -36,17 +46,21 @@ inputButton.addEventListener ('click', () => {
         lose++;
         resultDisplay.textContent = 'YOU LOSE :('; 
     }
-
+    
     //update DOM with score totals
-    winsDisplayTotal.textContent = win;
-    drawsDisplayTotal.textContent = draw;
-    lossesDisplayTotal.textContent = lose;
-
-    //highlight leading total
+    winDisplayTotal.textContent = win;
+    drawDisplayTotal.textContent = draw;
+    lossDisplayTotal.textContent = lose;
+    
+    //highlight new leading total
     let leadingTotal = calcLeadingTotal(win, draw, lose);
-    let leadingTotalDisplay = scoreDisplay.querySelector(`.${leadingTotal}`);
-    leadingTotalDisplay.style.color('lightsalmon');
+    let leadingTotalDisplay = document.querySelector(`.${leadingTotal}`);
+
+    leadingTotalDisplay.classList.toggle('leading-total');
+    console.log(leadingTotal, leadingTotalDisplay);
+
 });
+
 
 resetButton.addEventListener ('click', () => {
     //reset class on results div
@@ -58,8 +72,8 @@ resetButton.addEventListener ('click', () => {
     lose = 0;
 
     //reset score display
-    winsDisplayTotal.textContent = 0;
-    drawsDisplayTotal.textContent = 0;
-    lossesDisplayTotal.textContent = 0;
+    winDisplayTotal.textContent = 0;
+    drawDisplayTotal.textContent = 0;
+    lossDisplayTotal.textContent = 0;
 
 });
