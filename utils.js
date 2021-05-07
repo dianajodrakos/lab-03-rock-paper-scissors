@@ -1,30 +1,27 @@
-export function countAsAYes(input) {
-    if (input === '') {
-        return false;
+export function didUserWin(player, computer) {
+    if ((player === 'rock' && computer === 'scissors')
+     || (player === 'scissors' && computer === 'paper')
+     || (player === 'paper' && computer === 'rock')) {
+        return 'win';
     }
-    const inputValue = input[0].toLowerCase();
-    if (inputValue === 'y') {
-        return true;
+    if (player === computer) {
+        return 'draw';
     }
-    return false;
+    return 'lose';
+    
 }
-export function countAsANo(input) {
-    if (input === '') {
-        return false;
+
+export function calcLeadingTotal(win, draw, lose) {
+    if ((win > draw) && (win > lose)) {
+        return 'win';
     }
-    const inputValue = input[0].toLowerCase();
-    if (inputValue === 'n') {
-        return true;
+    if ((draw > win) && (draw > lose)) {
+        return 'draw';
+    } 
+    if ((lose > draw) && (lose > win)) {
+        return 'lose';
     }
-    return false;
-}
-export function countSpacewalk(input) {
-    if (input === '') {
-        return false;
+    else {
+        return 'reset';
     }
-    const inputValue = input.toLowerCase();
-    if (inputValue === 'susan helms') {
-        return true;
-    }
-    return false;
-}
+} 

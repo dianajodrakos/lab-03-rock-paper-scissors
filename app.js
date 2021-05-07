@@ -1,80 +1,86 @@
-import { countAsAYes, countAsANo, countSpacewalk } from './utils.js';
+import { getRandomThrow } from './get-random-throw.js';
+import { didUserWin, calcLeadingTotal } from './utils.js';
 
 // import functions and grab DOM elements
-const button = document.getElementById('button');
-const resultDisplay = document.getElementById('result');
-const headerHeight = document.querySelector('body');
+const inputButton = document.querySelector('#user-throw');
+const resultDisplay = document.querySelector('#result');
+const winDisplayTotal = document.querySelector('.wins-total');
+const drawDisplayTotal = document.querySelector('.draws-total');
+const lossDisplayTotal = document.querySelector('.losses-total');
+const winDisplay = document.querySelector('.win');
+const drawDisplay = document.querySelector('.draw');
+const loseDisplay = document.querySelector('.lose');
+const resetDisplay = document.querySelector('.reset');
+const resetButton = document.querySelector('#reset-button');
+
 // initialize state
+let win = 0;
+let draw = 0;
+let lose = 0;
 
 // set event listeners to update state and DOM
-
-button.addEventListener ('click', () => {
-    //alert user the quiz is going to start
-    alert('Let\'s test your new knowledge.');
-
-    //confirm if user is ready to start the quiz
-    const quizStartConfirm = confirm('Are you ready?');
-    if (quizStartConfirm === false) { 
-        alert('Keep studying and come back when you\'re ready!');
-        return;
-    }
-
-    //get user first + last name
-    const userFirstName = prompt('What\'s your first name?');    
-    const userLastName = prompt('What\'s your last name?');
-
-    //ask question 1
-    const answerOne = prompt(`Ok ${userFirstName}, did Mae Jemison fly on the Endeavor?`);    
-    //initialize state
-    let score = 0;
-    //evaluate answer
-    if (countAsAYes(answerOne)) {
-        score++;
-    }
-
-
-    //ask question 2
-    const answerTwo = prompt('Was Sally Ride the first woman in space?');
-        //evaluate answer
-    if (countAsANo(answerTwo)) {
-        score++;
-    }
-
+inputButton.addEventListener ('click', () => {
+    winDisplay.classList.remove('leading-total');
+    drawDisplay.classList.remove('leading-total');
+    loseDisplay.classList.remove('leading-total');
+    resetDisplay.classList.remove('leading-total');
     
-    //ask question 3
-    const answerThree = prompt('Has Stephanie Wilson flown to space three times?');    
-    //evaluate answer
-    if (countAsAYes(answerThree)) {
-        score++;
-    } 
+    //grab user + CPU throws and store them in variables
+    const input = document.querySelector('input[type=radio]:checked');
 
-    //ask bonus question
-    const answerFour = prompt('Bonus Points: What is the name of the woman who shares the record for the longest single spacewalk?');
-     //evaluate answer
-    if (countSpacewalk(answerFour)) {
-        score++;
+    //if no input is checked, alert user
+    if (input === null) {
+        return alert('Choose your weapon!');
     }
 
-    //alert user the quiz is finished
-    alert(`Alright, ${userFirstName}, you're done. You can check out your results in the web page.`);
-
-    //define var for percentage and calc total
-    const scorePercentage = parseInt((score / 3) * 100);
-
-    //do some style manipulation
-    headerHeight.style.setProperty('--header-height', '200px');
-    resultDisplay.classList.remove('hidden');
-
-    if (score > 3) {
-        resultDisplay.textContent = ` ${userFirstName} ${userLastName}, amazing work! You really know your space stuff! You scored ${scorePercentage}%! `;
-        resultDisplay.style.backgroundColor = 'aquamarine';
-    } else if (score > 2) {
-        resultDisplay.textContent = ` Great Job, ${userFirstName} ${userLastName}! You answered ${score} questions right. You scored ${scorePercentage}% `;
-    } else if (score > 0) {
-        resultDisplay.textContent = ` ${userFirstName} ${userLastName}, thanks for playing! You answered ${score} questions right. You scored ${scorePercentage}% `;
-    } else if (score === 0) {
-        resultDisplay.textContent = ` Hey ${userFirstName} ${userLastName}, you answered every question wrong. Did you even try? How shameful. Study harder next time. `;
-        resultDisplay.style.backgroundColor = 'lightsalmon';
+    let userThrow = input.value;
+    let computerThrow = getRandomThrow();
+    
+    //compare values to determine winner
+    let evalUserWin = didUserWin(userThrow, computerThrow);
+    
+    //change state
+    if (evalUserWin === 'draw') {
+        draw++;
+        resultDisplay.textContent = 'IT\'S A ✎d r a w';
+    } else if (evalUserWin === 'win') {
+        win++;
+        resultDisplay.textContent = '﹡ ❃ ✺ YOU WIN! ✸ ❂ ✧';
+    } else {
+        lose++;
+        resultDisplay.textContent = 'YOU LOSE :('; 
     }
+    
+    //update DOM with score totals
+    winDisplayTotal.textContent = win;
+    drawDisplayTotal.textContent = draw;
+    lossDisplayTotal.textContent = lose;
+    
+    //highlight new leading total
+    let leadingTotal = calcLeadingTotal(win, draw, lose);
+    let leadingTotalDisplay = document.querySelector(`.${leadingTotal}`);
+    leadingTotalDisplay.classList.add('leading-total');
+    console.log(leadingTotal, leadingTotalDisplay);
+
+});
+
+resetButton.addEventListener ('click', () => {
+    //reset class on results div
+    resultDisplay.textContent = 'R O C K  ///  P A P E R  ///  S C I S S O R S';
+
+    //reset score variables
+    win = 0;
+    draw = 0;
+    lose = 0;
+
+    //reset score display
+    winDisplayTotal.textContent = 0;
+    drawDisplayTotal.textContent = 0;
+    lossDisplayTotal.textContent = 0;
+
+    //reset leading total display
+    winDisplay.classList.remove('leading-total');
+    drawDisplay.classList.remove('leading-total');
+    loseDisplay.classList.remove('leading-total');
 
 });
