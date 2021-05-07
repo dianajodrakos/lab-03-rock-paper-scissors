@@ -10,7 +10,6 @@ const lossDisplayTotal = document.querySelector('.losses-total');
 const winDisplay = document.querySelector('.win');
 const drawDisplay = document.querySelector('.draw');
 const loseDisplay = document.querySelector('.lose');
-const resetDisplay = document.querySelector('.reset');
 const resetButton = document.querySelector('#reset-button');
 
 // initialize state
@@ -20,11 +19,58 @@ let lose = 0;
 
 // set event listeners to update state and DOM
 inputButton.addEventListener ('click', () => {
+    resetLeadingDisplay(); 
+    playGame(); 
+    highlightLeadingTotal(); 
+});
+
+resetButton.addEventListener ('click', () => {
+    resetScores(0); 
+    resetLeadingDisplay(); 
+    resultDisplay.textContent = 'R O C K  ///  P A P E R  ///  S C I S S O R S';
+});
+
+
+
+
+
+
+
+
+
+
+
+function resetScores(x) {
+ //reset score variables
+    win = x;
+    draw = x;
+    lose = x; 
+ //reset score display
+    winDisplayTotal.textContent = x;
+    drawDisplayTotal.textContent = x;
+    lossDisplayTotal.textContent = x;
+}
+
+function resetLeadingDisplay() {
+    //reset leading total display
     winDisplay.classList.remove('leading-total');
     drawDisplay.classList.remove('leading-total');
     loseDisplay.classList.remove('leading-total');
-    resetDisplay.classList.remove('leading-total');
-    
+}
+
+function highlightLeadingTotal() {
+    //highlight new leading total
+    let leadingTotal = calcLeadingTotal(win, draw, lose);
+
+    if (leadingTotal === undefined) {
+        return; 
+    } else { 
+        let leadingTotalDisplay = document.querySelector(`.${leadingTotal}`);
+        leadingTotalDisplay.classList.add('leading-total');
+    }
+}
+
+function playGame() {
     //grab user + CPU throws and store them in variables
     const input = document.querySelector('input[type=radio]:checked');
 
@@ -55,32 +101,4 @@ inputButton.addEventListener ('click', () => {
     winDisplayTotal.textContent = win;
     drawDisplayTotal.textContent = draw;
     lossDisplayTotal.textContent = lose;
-    
-    //highlight new leading total
-    let leadingTotal = calcLeadingTotal(win, draw, lose);
-    let leadingTotalDisplay = document.querySelector(`.${leadingTotal}`);
-    leadingTotalDisplay.classList.add('leading-total');
-    console.log(leadingTotal, leadingTotalDisplay);
-
-});
-
-resetButton.addEventListener ('click', () => {
-    //reset class on results div
-    resultDisplay.textContent = 'R O C K  ///  P A P E R  ///  S C I S S O R S';
-
-    //reset score variables
-    win = 0;
-    draw = 0;
-    lose = 0;
-
-    //reset score display
-    winDisplayTotal.textContent = 0;
-    drawDisplayTotal.textContent = 0;
-    lossDisplayTotal.textContent = 0;
-
-    //reset leading total display
-    winDisplay.classList.remove('leading-total');
-    drawDisplay.classList.remove('leading-total');
-    loseDisplay.classList.remove('leading-total');
-
-});
+}
