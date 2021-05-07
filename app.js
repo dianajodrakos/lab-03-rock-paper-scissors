@@ -23,7 +23,8 @@ inputButton.addEventListener ('click', () => {
     winDisplay.classList.remove('leading-total');
     drawDisplay.classList.remove('leading-total');
     loseDisplay.classList.remove('leading-total');
-
+    resetDisplay.classList.remove('leading-total');
+    
     //grab user + CPU throws and store them in variables
     const input = document.querySelector('input[type=radio]:checked');
 
