@@ -37,7 +37,7 @@ main {
 }
 
 section {
-    background-color: var(--color1);
+    /* background-color: var(--color1); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,7 +68,6 @@ footer {
     grid-template-rows: 70px;
     justify-content: center;
     align-items: center;
-
 }
 
 .reset-div {
@@ -81,7 +80,8 @@ footer span {
     margin: 0 5px;
 }
 
-a {
+
+/* a {
     color: blue;
 }
 
@@ -91,7 +91,7 @@ a:active {
 
 a:visited {
     color: cornflowerblue;
-}
+} */
 
 .score {
     background: inherit;

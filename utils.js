@@ -21,7 +21,4 @@ export function calcLeadingTotal(win, draw, lose) {
     if ((lose > draw) && (lose > win)) {
         return 'lose';
     }
-    else {
-        return 'reset';
-    }
 } 
