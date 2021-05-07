@@ -12,13 +12,13 @@ export function didUserWin(player, computer) {
 }
 
 export function calcLeadingTotal(win, draw, lose) {
-    if (win > draw && win > lose && (win !== draw || win !== lose)) {
+    if ((win > draw) && (win > lose)) {
         return 'win';
     }
-    else if (draw > win && draw > lose && (draw !== win || draw !== lose)) {
+    if ((draw > win) && (draw > lose)) {
         return 'draw';
     } 
-    else if (lose > draw && lose > win && (lose !== draw || lose !== win)) {
+    if ((lose > draw) && (lose > win)) {
         return 'lose';
     }
     else {

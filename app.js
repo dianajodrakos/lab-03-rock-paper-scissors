@@ -10,8 +10,8 @@ const lossDisplayTotal = document.querySelector('.losses-total');
 const winDisplay = document.querySelector('.win');
 const drawDisplay = document.querySelector('.draw');
 const loseDisplay = document.querySelector('.lose');
-const resetDisplay = document.querySelector('.reset-div');
-const resetButton = document.querySelector('#reset');
+const resetDisplay = document.querySelector('.reset');
+const resetButton = document.querySelector('#reset-button');
 
 // initialize state
 let win = 0;
@@ -20,6 +20,9 @@ let lose = 0;
 
 // set event listeners to update state and DOM
 inputButton.addEventListener ('click', () => {
+    winDisplay.classList.remove('leading-total');
+    drawDisplay.classList.remove('leading-total');
+    loseDisplay.classList.remove('leading-total');
     
     //grab user + CPU throws and store them in variables
     const input = document.querySelector('input[type=radio]:checked');
@@ -55,12 +58,10 @@ inputButton.addEventListener ('click', () => {
     //highlight new leading total
     let leadingTotal = calcLeadingTotal(win, draw, lose);
     let leadingTotalDisplay = document.querySelector(`.${leadingTotal}`);
-
-    leadingTotalDisplay.classList.toggle('leading-total');
+    leadingTotalDisplay.classList.add('leading-total');
     console.log(leadingTotal, leadingTotalDisplay);
 
 });
-
 
 resetButton.addEventListener ('click', () => {
     //reset class on results div
