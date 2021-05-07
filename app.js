@@ -23,7 +23,7 @@ inputButton.addEventListener ('click', () => {
     winDisplay.classList.remove('leading-total');
     drawDisplay.classList.remove('leading-total');
     loseDisplay.classList.remove('leading-total');
-    
+
     //grab user + CPU throws and store them in variables
     const input = document.querySelector('input[type=radio]:checked');
 
@@ -76,5 +76,10 @@ resetButton.addEventListener ('click', () => {
     winDisplayTotal.textContent = 0;
     drawDisplayTotal.textContent = 0;
     lossDisplayTotal.textContent = 0;
+
+    //reset leading total display
+    winDisplay.classList.remove('leading-total');
+    drawDisplay.classList.remove('leading-total');
+    loseDisplay.classList.remove('leading-total');
 
 });
